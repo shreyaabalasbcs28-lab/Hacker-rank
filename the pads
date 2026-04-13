@@ -1,0 +1,12 @@
+-- First query: Names with first letter of profession
+SELECT 
+    NAME || '(' || SUBSTR(OCCUPATION, 1, 1) || ')'
+FROM OCCUPATIONS
+ORDER BY NAME;
+
+-- Second query: Summaries with casted counts and lowercase names
+SELECT 
+    'There are a total of ' || CAST(COUNT(OCCUPATION) AS CHAR(2)) || ' ' || LOWER(OCCUPATION) || 's.'
+FROM OCCUPATIONS
+GROUP BY OCCUPATION
+ORDER BY COUNT(OCCUPATION) ASC, OCCUPATION ASC;
